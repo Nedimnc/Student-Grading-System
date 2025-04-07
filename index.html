@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Grading System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Student Grading System</h1>
+
+        <!-- Form to add student and flexible grading categories -->
+        <form id="studentForm">
+            <div class="section">
+                <h2>Student Information</h2>
+                <label for="studentName">Student Name:</label>
+                <input type="text" id="studentName" required>
+            </div>
+
+            <div class="section">
+                <h2>Enter Grading Criteria</h2>
+                <p>Add assessment types (e.g., Project, Midterm, Final, Homework) along with their grades and weights.</p>
+
+                <!-- Table for entering different grading criteria -->
+                <table id="gradingTable">
+                    <thead>
+                        <tr>
+                            <th>Assignment/Exam</th>
+                            <th>Grade(s) (comma separated)</th>
+                            <th>Weight (%)</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="text" placeholder="e.g., Project"></td>
+                            <td><input type="text" placeholder="Grades, comma separated"></td>
+                            <td><input type="number" placeholder="Weight"></td>
+                            <td><button type="button" class="removeRowBtn">Remove</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button type="button" id="addRowBtn">Add Another Assessment</button>
+            </div>
+
+            <div class="section">
+                <h2>Submit Student</h2>
+                <button type="submit">Add Student</button>
+            </div>
+        </form>
+
+        <!-- Table to display the students and their grades -->
+        <div id="studentList">
+            <h2>Student List</h2>
+            <table id="studentTable">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Assessments</th>
+                        <th>Weighted Average</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Dynamic rows will be inserted here -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Section for calculating average without weighted grades -->
+        <div class="section">
+            <h2>Calculate Average Without Weights</h2>
+            <label for="simpleGrades">Grades (comma separated):</label>
+            <input type="text" id="simpleGrades" required>
+            <button id="simpleAvgBtn">Calculate Average</button>
+            <p id="simpleAvgResult"></p>
+        </div>
+    </div>
+</body>
+</html>
