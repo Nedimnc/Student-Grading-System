@@ -4,28 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Grading System</title>
+    <!-- Link to the external stylesheet for the page -->
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <div class="container">
         <h1>Student Grading System</h1>
 
-        <!-- Form to add student and flexible grading categories -->
+        <!-- Form to add student and their grading criteria -->
         <form id="studentForm">
+            <!-- Section for student information -->
             <div class="section">
                 <h2>Student Information</h2>
                 <label for="studentName">Student Name:</label>
+                <!-- Input field for entering student name -->
                 <input type="text" id="studentName" name="name" required>
             </div>
 
+            <!-- Section for adding grading criteria (e.g., Project, Midterm) -->
             <div class="section">
                 <h2>Enter Grading Criteria</h2>
                 <p>Add assessment types (e.g., Project, Midterm, Final, Homework) along with their grades and weights.</p>
 
-                <!-- Table for entering different grading criteria -->
+                <!-- Table to dynamically add rows for different assessments -->
                 <table id="gradingTable">
                     <thead>
                         <tr>
+                            <!-- Headers for each column -->
                             <th>Assignment/Exam</th>
                             <th>Grade(s) (comma separated)</th>
                             <th>Weight (%)</th>
@@ -34,6 +39,7 @@
                     </thead>
                     <tbody>
                         <tr>
+                            <!-- Default row for entering the first assessment -->
                             <td><input type="text" name="assessment_name_1" placeholder="e.g., Project"></td>
                             <td><input type="text" name="grades_1" placeholder="Grades, comma separated"></td>
                             <td><input type="number" name="weight_1" placeholder="Weight"></td>
@@ -41,20 +47,23 @@
                         </tr>
                     </tbody>
                 </table>
+                <!-- Button to add more rows dynamically -->
                 <button type="button" id="addRowBtn">Add Another Assessment</button>
             </div>
 
+            <!-- Section for the submit button to add the student -->
             <div class="section">
                 <h2>Submit Student</h2>
                 <button type="submit">Add Student</button>
             </div>
         </form>
 
-        <!-- Table to display the students and their grades -->
+        <!-- Table to display the list of students and their grades -->
         <div id="studentList">
             <h2>Student List</h2>
             <table id="studentTable">
                 <thead>
+                    <!-- Column headers for displaying student data -->
                     <tr>
                         <th>Name</th>
                         <th>Assessments</th>
@@ -62,22 +71,25 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Dynamic rows will be inserted here -->
+                    <!-- Dynamic rows will be inserted here when a student is added -->
                 </tbody>
             </table>
         </div>
 
-        <!-- Section for calculating average without weighted grades -->
+        <!-- Section for calculating average without weights (simple average) -->
         <div class="section">
             <h2>Calculate Average Without Weights</h2>
             <label for="simpleGrades">Grades (comma separated):</label>
+            <!-- Input field for entering grades without weights -->
             <input type="text" id="simpleGrades" required>
+            <!-- Button to calculate the simple average -->
             <button id="simpleAvgBtn">Calculate Average</button>
+            <!-- Display the result of the simple average calculation -->
             <p id="simpleAvgResult"></p>
         </div>
     </div>
 
-    <!-- Move script tag here to ensure DOM is fully loaded before executing -->
+    <!-- Link to the external JavaScript file -->
     <script src="{{ url_for('static', filename='app.js') }}"></script>
 </body>
 </html>

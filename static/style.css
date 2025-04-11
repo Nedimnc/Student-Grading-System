@@ -1,95 +1,106 @@
+/* Body Styles */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    font-family: Arial, sans-serif;  /* Set font style */
+    background-color: #f4f4f4;      /* Set background color */
     margin: 0;
     padding: 0;
 }
 
+/* Container Styles */
 .container {
-    max-width: 800px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    max-width: 800px;  /* Set the maximum width for the container */
+    margin: 50px auto; /* Center the container with some margin */
+    padding: 20px;     /* Add padding */
+    background-color: white;  /* Set background to white */
+    border-radius: 10px;     /* Add rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);  /* Add shadow */
 }
 
+/* Heading Styles */
 h1, h2 {
-    text-align: center;
-    color: #333;
+    text-align: center;  /* Center-align headings */
+    color: #333;         /* Set text color */
 }
 
+/* Section Styles */
 .section {
-    margin-bottom: 20px;
+    margin-bottom: 20px;  /* Add space between sections */
 }
 
+/* Label Styles */
 label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
+    display: block;       /* Make label a block element */
+    margin-bottom: 5px;   /* Add margin to the bottom */
+    font-weight: bold;    /* Set font weight */
 }
 
+/* Input Field Styles */
 input[type="text"], input[type="number"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
+    width: 100%;          /* Make input fields full width */
+    padding: 10px;        /* Add padding */
+    margin-bottom: 10px;  /* Add margin to the bottom */
+    border: 1px solid #ccc;  /* Set border color */
+    border-radius: 5px;   /* Round corners */
+    font-size: 16px;      /* Set font size */
 }
 
+/* Button Styles */
 button {
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
+    padding: 10px 20px;   /* Add padding */
+    background-color: #4CAF50;  /* Set background color */
+    color: white;         /* Set text color */
+    border: none;         /* Remove border */
+    border-radius: 5px;   /* Round corners */
+    cursor: pointer;      /* Show pointer cursor on hover */
+    font-size: 16px;       /* Set font size */
 }
 
+/* Hover Effect for Buttons */
 button:hover {
-    background-color: #45a049;
+    background-color: #45a049;  /* Darken the background on hover */
 }
 
+/* Grading Table Styles */
 #gradingTable {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
+    width: 100%;                /* Make the table full width */
+    border-collapse: collapse;  /* Remove space between table cells */
+    margin-top: 20px;           /* Add top margin */
 }
 
 #gradingTable th, #gradingTable td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: center;
+    border: 1px solid #ddd;  /* Add border for table cells */
+    padding: 8px;             /* Add padding to cells */
+    text-align: center;       /* Center-align text */
 }
 
 #gradingTable th {
-    background-color: #f2f2f2;
+    background-color: #f2f2f2;  /* Light gray background for headers */
 }
 
 #gradingTable input {
-    width: 90%;
+    width: 90%;  /* Make input fields inside the table narrow */
 }
 
+/* Student Table Styles */
 #studentTable {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
+    width: 100%;                /* Make the table full width */
+    border-collapse: collapse;  /* Remove space between table cells */
+    margin-top: 20px;           /* Add top margin */
 }
 
 #studentTable th, #studentTable td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: center;
+    border: 1px solid #ddd;  /* Add border for table cells */
+    padding: 8px;             /* Add padding to cells */
+    text-align: center;       /* Center-align text */
 }
 
 #studentTable th {
-    background-color: #f2f2f2;
+    background-color: #f2f2f2;  /* Light gray background for headers */
 }
 
+/* Result Display for Simple Average */
 #simpleAvgResult {
-    margin-top: 10px;
-    font-weight: bold;
-    color: #333;
+    margin-top: 10px;   /* Add top margin */
+    font-weight: bold;  /* Set font to bold */
+    color: #333;        /* Set text color */
 }
