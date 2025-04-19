@@ -1,55 +1,68 @@
+# app.py
 from flask import Flask, render_template, request, jsonify
 
+# Create the Flask application instance (Encapsulation: hiding implementation details behind Flask's API)
 app = Flask(__name__)
 
-# Store student data in memory (could be replaced by a database)
+# In-memory storage for student records (List structure used for data organization)
 students = []
 
+# Route to render the main frontend interface
 @app.route('/')
 def index():
-    """
-    Render the index page for the grading system.
-    """
     return render_template('index.html')
 
+# Route to process submitted student data
 @app.route('/add_student', methods=['POST'])
 def add_student():
-    """
-    Handle the form submission and calculate weighted average for student grades.
-    """
-    # Get the student name
+    # Retrieve the student's name from the form input
     name = request.form['name']
-    
-    # Process each assessment's grades and weight
-    assessments = []  # List to hold assessment data
-    total_weight = 0  # Total weight for all assessments
-    weighted_sum = 0  # Sum of weighted grades
-    
+
+    # Local variables to store assessment breakdown and calculations (Scope Rules)
+    assessments = []
+    total_weight = 0
+    weighted_sum = 0
+
+    # Iterate through the submitted form keys
     for key in request.form:
+        # Look for assessment entries (e.g., assessment_name_1, grades_1, weight_1)
         if key.startswith('assessment_name'):
-            # Extract the assessment name, grades, and weight
-            assessment_name = request.form[key]
-            grades_input = request.form.get(f'grades_{key.split("_")[-1]}')
-            weight = float(request.form.get(f'weight_{key.split("_")[-1]}'))
-            grades = list(map(int, grades_input.split(',')))  # Convert grades to integers
-            
-            # Calculate the average grade for the assessment
-            average_grade = sum(grades) / len(grades)
-            assessments.append({'assessment_name': assessment_name, 'average_grade': average_grade, 'weight': weight})
-            
-            # Calculate the weighted sum of the grades
-            weighted_sum += average_grade * (weight / 100)
-            total_weight += weight
-    
-    # Ensure the total weight adds up to 100%
+            index = key.split('_')[-1]
+            assessment_name = request.form[key]  # Name of the assessment (e.g., Homework)
+            grades_input = request.form.get(f'grades_{index}')  # Comma-separated grades
+            weight = float(request.form.get(f'weight_{index}', 0))  # Weight of this assessment
+
+            # If grades were entered, process them
+            if grades_input:
+                grades = list(map(float, grades_input.split(',')))  # Convert grades from string to float (Data Type Conversion)
+                average_grade = sum(grades) / len(grades)  # Calculate average (Average Calculations)
+
+                # Encapsulate assessment data in a dictionary (Data Abstraction)
+                assessments.append({
+                    'assessment_name': assessment_name,
+                    'average_grade': round(average_grade, 2),
+                    'grades': grades,
+                    'weight': weight
+                })
+
+                # Accumulate the weighted sum
+                weighted_sum += average_grade * (weight / 100)
+                total_weight += weight
+
+    # Check if total weights are valid (Input Validation / Error Handling)
     if total_weight != 100:
         return jsonify({"error": "The total weight must be 100%"}), 400
-    
-    # Add the student data to the list
-    students.append({'name': name, 'assessments': assessments, 'weighted_average': weighted_sum})
-    
-    # Return the updated list of students as JSON
+
+    # Add finalized student record to the list (Encapsulation of full student data)
+    students.append({
+        'name': name,
+        'assessments': assessments,
+        'weighted_average': round(weighted_sum, 2)
+    })
+
+    # Return updated list of students (Used by frontend to refresh display)
     return jsonify(students)
 
+# Start the Flask server (Imperative Paradigm — Direct control over program flow)
 if __name__ == '__main__':
-    app.run(debug=True)  # Run the Flask app with debugging enabled
+    app.run(debug=True)
