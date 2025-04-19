@@ -1,4 +1,3 @@
-# app.py
 from flask import Flask, render_template, request, jsonify
 
 # Create the Flask application instance (Encapsulation: hiding implementation details behind Flask's API)

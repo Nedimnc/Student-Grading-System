@@ -1,5 +1,3 @@
-// app.js
-
 document.addEventListener('DOMContentLoaded', function() {
     // Handle dynamic creation of grading rows (Encapsulation + List Construction)
     document.getElementById('addRowBtn').addEventListener('click', function() {
